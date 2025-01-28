@@ -69,7 +69,7 @@ class DataTransformation:
             logging.info(f"applying preprocceing object on train df and test df")
             input_feature_train_arr=preproccessing_object.fit_transform(input_feature_train_df)
             input_feature_test_arr=preproccessing_object.transform(input_feature_test_df)
-            train_acc=np.c_(
+            train_arr=np.c_(
                 input_feature_train_arr,
                 np.array(target_feature_train_df)
             )
@@ -77,11 +77,11 @@ class DataTransformation:
                 file_path=self.data_transformation_config.preprocessor_obj_file_path,
                 obj=preproccessing_object()
             )
-            test_acc=np.c_(
+            test_arr=np.c_(
                 input_feature_test_arr,
                 np.array(target_feature_test_df)
             )
-            return (train_acc, test_acc,self.data_transformation_config.preprocessor_obj_file_path)
+            return (train_arr, test_arr,self.data_transformation_config.preprocessor_obj_file_path)
 
 
 
